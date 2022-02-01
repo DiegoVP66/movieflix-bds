@@ -1,0 +1,92 @@
+.movie-details-container {
+  font-size: 24px;
+}
+
+.movie-details-container h1 {
+  padding: 17px 45px 18px 10px;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.card-container {
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 157px;
+  padding: 20px 10px 17px 10px;
+}
+.box-container {
+  height: 30px;
+  height: 50px;
+}
+
+.box-container input {
+  padding: 10px;
+  font-size: 16px;
+  letter-spacing: -0.015em;
+  color: #9e9e9e;
+}
+
+.sv-button-container {
+  margin-top: 17px;
+}
+
+.movie-review-container {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 18px;
+  padding-bottom: 14px;
+  text-align: justify;
+}
+.movie-review-container p {
+  margin-right: 10px;
+}
+
+.feedback{
+  color: #dfa9a9;
+  font-size: 15px;
+}
+
+@media (min-width: 576px) {
+  .card-container {
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 20px 20px 17px 20px;
+  }
+
+  .top-text {
+    padding-left: 30px;
+    font-size: 23px;
+  }
+
+  .sv-button-container {
+    height: 50px;
+  }
+
+  .sv-button-container button {
+    width: 334px;
+    height: 50px;
+    margin-top: -2px;
+  }
+  .movie-review-container {
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 0 10px 36px 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .top-text {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .top-text {
+    font-size: 48px;
+  }
+
+  .sv-button-container button {
+    width: 400px;
+  }
+}

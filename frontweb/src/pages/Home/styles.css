@@ -1,0 +1,34 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+}
+.auth-banner-container {
+  display: none;
+  width: 397px;
+  height: 460px;
+  margin: 81px 0 111px 70px;
+}
+.auth-banner-container h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 19px;
+  letter-spacing: -0.015em;
+}
+.auth-banner-container p {
+  margin-bottom: 51px;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  color: #f2f2f2;
+}
+
+.auth-banner-container svg {
+  width: 381px;
+  height: 265px;
+  margin-left: -30px;
+}
+
+@media (min-width: 1200px) {
+  .auth-banner-container {
+    display: unset;
+  }
+}

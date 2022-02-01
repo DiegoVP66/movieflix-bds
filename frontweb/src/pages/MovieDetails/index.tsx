@@ -3,7 +3,7 @@ import Button from "components/Button";
 import MovieReviewCard from "components/MovieReviewCard";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { Review } from "types/review";
 import { SpringList } from "types/spring";
 import { hasAnyRoles } from "util/auth";
@@ -24,7 +24,9 @@ const MovieDetails = () => {
 
   const [reviews, setReviews] = useState<SpringList<Review>>();
 
-  const [hasError, setHasError] = useState(false);
+  const { from } = { from: { pathname: `/movies/${movieId}` } };
+
+  const history = useHistory();
 
   const {
     register,
@@ -46,15 +48,14 @@ const MovieDetails = () => {
 
   const onSubmit = (formData: FormData) => {
     formData.movieId = Number(movieId);
-    console.log(formData.text);
     postNewReview(formData)
       .then((response) => {
-        setHasError(false);
         reviews?.data.push(response.data);
         setValue("text", "");
+
+        history.replace(from);
       })
       .catch((error) => {
-        setHasError(true);
         console.log(error);
       });
   };
@@ -63,11 +64,6 @@ const MovieDetails = () => {
     <div className="movie-details-container">
       <div className="top-text">
         <h1>{`Tela detalhes do filme id: ${movieId}`}</h1>
-        {hasError && (
-          <div className="alert alert-danger alert-container">
-            Ops!Algum erro ocorreu...
-          </div>
-        )}
       </div>
       {hasAnyRoles(["ROLE_MEMBER"]) && (
         <>

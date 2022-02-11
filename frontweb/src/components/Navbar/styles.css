@@ -32,6 +32,17 @@
 
 @media (min-width: 576px) {
   .button-container {
-    margin-left: 150px;
+    margin-left: 170px;
+  }
+}
+
+@media (min-width: 768px) {
+  .button-container {
+    margin-left: 155px;
+  }
+}
+@media (min-width: 1400px) {
+  .button-container {
+    margin-left: 55px;
   }
 }

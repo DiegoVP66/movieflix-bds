@@ -47,37 +47,56 @@
   font-size: 15px;
 }
 
+.movie-card-info-container {
+  margin: 20px 10px 25px 10px;
+}
+
 @media (min-width: 576px) {
   .card-container {
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
     padding: 20px 20px 17px 20px;
   }
 
-  .top-text {
-    padding-left: 30px;
+  .movie-card-info-container {
+    margin-left: 20px;
+    margin-right: 20px;
     font-size: 23px;
   }
 
-  .sv-button-container {
+  div.sv-button-container {
     height: 50px;
   }
 
   .sv-button-container button {
-    width: 334px;
     height: 50px;
     margin-top: -2px;
   }
   .movie-review-container {
-    margin-left: 40px;
-    margin-right: 40px;
-    padding: 0 10px 36px 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 0 10px 16px 10px;
   }
 }
 
 @media (min-width: 768px) {
   .top-text {
     font-size: 30px;
+  }
+  .card-container {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  .movie-card-info-container {
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 23px;
+  }
+  .movie-review-container {
+    margin-left: 40px;
+    margin-right: 40px;
   }
 }
 
@@ -87,6 +106,22 @@
   }
 
   .sv-button-container button {
-    width: 400px;
+    width: 500px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .card-container {
+    margin-left: 130px;
+    margin-right: 130px;
+  }
+
+  .movie-card-info-container {
+    margin-left: 130px;
+    margin-right: 130px;
+  }
+  .movie-review-container {
+    margin-left: 130px;
+    margin-right: 130px;
   }
 }

@@ -4,10 +4,14 @@ import MovieReviewCard from "components/MovieReviewCard";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Movie } from "types/movie";
 import { Review } from "types/review";
 import { SpringList } from "types/spring";
 import { hasAnyRoles } from "util/auth";
 import { postNewReview, requestBackend } from "util/request";
+import MovieInfo from "./MovieInfo";
 import "./styles.css";
 
 type UrlParams = {
@@ -24,6 +28,8 @@ const MovieDetails = () => {
 
   const [reviews, setReviews] = useState<SpringList<Review>>();
 
+  const [movie, setMovie] = useState<Movie>();
+
   const { from } = { from: { pathname: `/movies/${movieId}` } };
 
   const history = useHistory();
@@ -34,6 +40,17 @@ const MovieDetails = () => {
     setValue,
     formState: { errors },
   } = useForm<FormData>();
+
+  useEffect(() => {
+    const params: AxiosRequestConfig = {
+      url: `/movies/${movieId}`,
+      withCredentials: true,
+    };
+
+    requestBackend(params).then((response) => {
+      setMovie(response.data);
+    });
+  }, [movieId]);
 
   useEffect(() => {
     const params: AxiosRequestConfig = {
@@ -50,20 +67,29 @@ const MovieDetails = () => {
     formData.movieId = Number(movieId);
     postNewReview(formData)
       .then((response) => {
+        toast.info("Avaliação registrada com sucesso!");
         reviews?.data.push(response.data);
         setValue("text", "");
-
         history.replace(from);
       })
       .catch((error) => {
+        toast.error("Erro ao submeter avaliação!");
         console.log(error);
       });
   };
 
   return (
     <div className="movie-details-container">
-      <div className="top-text">
-        <h1>{`Tela detalhes do filme id: ${movieId}`}</h1>
+      <div className="movie-card-info-container">
+        {movie && (
+          <MovieInfo
+            title={movie.title}
+            subtitle={movie.subTitle}
+            year={movie.year}
+            imgUrl={movie.imgUrl}
+            synopsis={movie.synopsis}
+          />
+        )}
       </div>
       {hasAnyRoles(["ROLE_MEMBER"]) && (
         <>
